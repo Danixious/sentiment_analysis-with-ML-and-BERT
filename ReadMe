@@ -1,0 +1,112 @@
+## Sentiment Analysis using NLP and Machine Learning 
+This projrct performs sentiment analysis on a dataset of user genereated text review,classifying theme into "positive","negative" and "neutral" categories using natural language processing (NLP)
+and machine learning models and deep learning models (BERT)
+
+
+## Project Structure 
+sentiment_analysis/
+|
+|---data/
+| |---data.csv
+| |---labeled_data.csv
+| |---cleaned_data.csv
+| |---temp_data/
+| | |---bow_vectorizer.pkl
+| | |---X_bow.pkl
+| | |---sentiment_model.pkl
+| | |---bert_sentiment/
+|
+|---scripts/
+| |---load_and_explore.py
+| |---labeling_data.py
+| |---BERT_model/
+| | |---pre-process_bert.py
+| | |---bert.py
+| |---ML_model/
+| | |---pre-process_ML.py
+| | |---feature_eng.py
+| | |---model.py
+| | |---model_test.py
+| | |---test_ML_model.py
+| |---app.py
+
+
+## Tools and Libraries Used
+- **Python**
+- **pandas**, **NumPy**
+- **NLTK**, **spaCy**, **TextBlob**
+- **scikit-learn**
+- **joblib**, **matplotlib**
+- **transformers**,**Pytorch**,**tqdm**
+- **Streamlit**
+
+
+
+## NLP Techniques Used
+This project makes extensive use of NLP techniques:
+
+| Step                  | Technique                         | Library           |
+|-----------------------|-----------------------------------|-------------------|
+| ✅ Lowercasing         | Convert all text to lowercase     | `pandas`          |
+| ✅ Punctuation Removal | Remove unnecessary symbols        | `string.punctuation` |
+| ✅ Tokenization        | Break text into individual words  | `nltk`            |
+| ✅ Lemmatization       | Reduce words to base form         | `WordNetLemmatizer` |
+| ✅ Stopword Removal    | Remove irrelevant words           | `spaCy`           |
+| ✅ Sentiment Labeling  | Rule-based polarity scoring       | `TextBlob`        |
+| ✅ Vectorization       | Bag of Words & TF-IDF             | `scikit-learn`    |
+
+## 🔄 Workflow Pipeline
+
+1. **Data Loading**: Load raw reviews from `labeled_data.csv`
+2. **Text Preprocessing**: Clean, lemmatize, and tokenize text
+3. **Sentiment Labeling**: Automatically label text using TextBlob
+4. **Feature Engineering**:
+    - Bag of Words (CountVectorizer)
+    - TF-IDF Vectorizer (for comparison)
+5. **Model Training**:
+    - Naive Bayes (best performing)
+    - Logistic Regression (tested)
+    -Random Forest(tested)
+6. **Model Evaluation**: Accuracy, F1-score, Confusion Matrix
+7. **Real-World Testing**: Upload CSV or enter custom text in Streamlit UI
+
+## 📈 Results
+
+| Model               | Accuracy | Precision | F1 Score | Notes |
+|--------------------|----------|-----------|----------|-------|
+| **Naive Bayes**     | **92.1%**  | High      | **0.92** | Best performance, especially on slang |
+| Logistic Regression | 96.4%      | High      | 0.96    | Slightly weaker on slang or short expressions |
+|Random forest        |90.3%       |High        |0.90    |Slower training; underperformed on slang     |
+|**BERT**             |**epoch 1** |High        |0.971   
+                      |**epoch 2** |High        |0.969
+                      |**epoch 3** |High        |0.974
+## 🔬 Test Cases for the ML_model(Examples)
+
+| Input Text                            | Predicted Sentiment |
+|---------------------------------------|----------------------|
+| the movie was lit                     | Positive ✅           |
+| bad movie                             | Negative ✅           |
+| meh                                   | Neutral ✅            |
+| banging movie ngl                     | Positive ✅           |
+| the movie was like a burning sensation| Neutral ❌ (ambiguous) |
+
+
+## Conclusion
+
+
+- **BoW + Naive Bayes** generalize well on short/slang-heavy text.
+- **TextBlob labeling** offers a quick pseudo-labeled dataset.
+- **BERT** significantly improves performance, capturing deeper context and nuance.
+- Streamlit app allows **real-time prediction** for both ML and BERT pipelines.
+
+##  Future Work
+
+- Expand slang dictionary to improve classification (e.g., map "lit" → positive)
+- Integrate emoji and abbreviation handling
+
+## Credits
+
+Created by **Daniel Julius Natal** as a project in:
+- **Machine Learning**
+- **Deep Learning** 
+- **Natural Language Processing**.
