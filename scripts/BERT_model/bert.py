@@ -63,19 +63,19 @@ train_texts, val_texts, train_labels, val_labels = train_test_split(
 tokenizer = BertTokenizer.from_pretrained(Model_Name)
 
 # DEBUG: show a tokenized sample
-print("🔍 Sample Text:", train_texts[0])
-print("🧪 Tokenized Sample:", tokenizer(train_texts[0]))
+print(" Sample Text:", train_texts[0])
+print(" Tokenized Sample:", tokenizer(train_texts[0]))
 
 train_ds = SentimentDataset(train_texts, train_labels, tokenizer)
 val_ds = SentimentDataset(val_texts, val_labels, tokenizer)
 
-print("✅ Training samples:", len(train_ds))
-print("✅ Validation samples:", len(val_ds))
+print(" Training samples:", len(train_ds))
+print(" Validation samples:", len(val_ds))
 
 train_loader = DataLoader(train_ds, batch_size=Batch_size, shuffle=True)
 val_loader = DataLoader(val_ds, batch_size=Batch_size)
 
-print("📦 Total Training Batches:", len(train_loader))
+print(" Total Training Batches:", len(train_loader))
 
 # Initialize model
 model = BertForSequenceClassification.from_pretrained(Model_Name, num_labels=3)
@@ -90,7 +90,7 @@ for epoch in range(Epochs):
     model.train()
     total_train_loss = 0
 
-    print(f"\n🚀 Starting Epoch {epoch + 1}/{Epochs}")
+    print(f"\n Starting Epoch {epoch + 1}/{Epochs}")
     progress_bar = tqdm(train_loader, desc="Training", leave=False)
 
     for i, batch in enumerate(progress_bar):
@@ -114,7 +114,7 @@ for epoch in range(Epochs):
         progress_bar.set_description(f"Epoch {epoch + 1} | Loss: {loss.item():.4f}")
 
     avg_train_loss = total_train_loss / len(train_loader)
-    print(f"✅ Epoch {epoch + 1} Completed — Avg Loss: {avg_train_loss:.4f}")
+    print(f" Epoch {epoch + 1} Completed — Avg Loss: {avg_train_loss:.4f}")
 
     # Validation
     model.eval()
@@ -131,7 +131,7 @@ for epoch in range(Epochs):
             correct += (preds == labels).sum().item()
             total += labels.size(0)
 
-    print(f"🎯 Validation Accuracy: {correct / total:.4f}")
+    print(f" Validation Accuracy: {correct / total:.4f}")
 
 # Save Model
 output_dir = "D:/sentiment_analysis/data/temp_data/bert_sentiment"
@@ -139,4 +139,4 @@ os.makedirs(output_dir, exist_ok=True)
 model.save_pretrained(output_dir)
 tokenizer.save_pretrained(output_dir)
 
-print(f"✅ Model and tokenizer saved to {output_dir}")
+print(f" Model and tokenizer saved to {output_dir}")
