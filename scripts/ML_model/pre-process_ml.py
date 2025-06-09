@@ -70,4 +70,4 @@ print(data.head())
 
 # Save cleaned data
 data.to_csv("D:/sentiment_analysis/data/cleaned_data_ML.csv", index=False)
-print("✅ cleaned data has been saved!")
+print(" cleaned data has been saved!")
