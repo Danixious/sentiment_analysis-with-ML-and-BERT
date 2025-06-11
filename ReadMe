@@ -1,5 +1,5 @@
 ## Sentiment Analysis using NLP and Machine Learning 
-This projrct performs sentiment analysis on a dataset of user genereated text review,classifying theme into "positive","negative" and "neutral" categories using natural language processing (NLP)
+This project performs sentiment analysis on a dataset of user genereated text review,classifying theme into "positive","negative" and "neutral" categories using natural language processing (NLP)
 and machine learning models and deep learning models (BERT)
 
 
